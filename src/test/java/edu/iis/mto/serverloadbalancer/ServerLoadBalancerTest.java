@@ -10,6 +10,8 @@ import static org.hamcrest.Matchers.equalTo;
 import org.junit.Test;
 
 public class ServerLoadBalancerTest extends ServerLoadBalancerBaseTest {
+	
+
 	@Test
 	public void itCompiles() {
 		assertThat(true, equalTo(true));
@@ -34,51 +36,59 @@ public class ServerLoadBalancerTest extends ServerLoadBalancerBaseTest {
 		assertThat("the server should contain vm", theServer.contains(theVm));
 	}
 
-	@Test 
-	public void balancingOneServerWithTenSlotsCapacity_andOneSlotVm_fillTheServerWithTenPercent(){
+	@Test
+	public void balancingOneServerWithTenSlotsCapacity_andOneSlotVm_fillTheServerWithTenPercent() {
 		Server theServer = a(server().withCapacity(10));
 		Vm theVm = a(vm().ofSize(1));
 		balance(aListOfServersWith(theServer), aListOfVmsWith(theVm));
 
 		assertThat(theServer, hasLoadPercentageOf(10.0d));
 		assertThat("the server should contain vm", theServer.contains(theVm));
-		
+
 	}
-	
+
 	@Test
-	public void balancingAServerWithEnoughRoom_getsFilledWithAllVms(){
+	public void balancingAServerWithEnoughRoom_getsFilledWithAllVms() {
 		Server theServer = a(server().withCapacity(100));
 		Vm theFirstVm = a(vm().ofSize(1));
 		Vm theSecondVm = a(vm().ofSize(1));
-		balance(aListOfServersWith(theServer), aListOfVmsWith(theFirstVm, theSecondVm));
+		balance(aListOfServersWith(theServer),
+				aListOfVmsWith(theFirstVm, theSecondVm));
 
 		assertThat(theServer, hasVmsCountOf(2));
-		assertThat("the server should contain vm", theServer.contains(theFirstVm));
-		assertThat("the server should contain vm", theServer.contains(theSecondVm));
+		assertThat("the server should contain vm",
+				theServer.contains(theFirstVm));
+		assertThat("the server should contain vm",
+				theServer.contains(theSecondVm));
 
 	}
 
-	@Test 
-	public void aVm_shouldBeBalanced_onLessLoadedServerFirst(){
-		Server lessLoadedServer = a(server().withCapacity(100).withCurrentLoadOf(45.0d));
-		Server moreLoadedServer = a(server().withCapacity(100).withCurrentLoadOf(50.0d));
+	@Test
+	public void aVm_shouldBeBalanced_onLessLoadedServerFirst() {
+		Server lessLoadedServer = a(server().withCapacity(100)
+				.withCurrentLoadOf(45.0d));
+		Server moreLoadedServer = a(server().withCapacity(100)
+				.withCurrentLoadOf(50.0d));
 		Vm theVm = a(vm().ofSize(10));
-		
-		balance(aListOfServersWith(moreLoadedServer, lessLoadedServer), aListOfVmsWith(theVm));
 
-		assertThat("the less loaded server should contain vm", lessLoadedServer.contains(theVm));
+		balance(aListOfServersWith(moreLoadedServer, lessLoadedServer),
+				aListOfVmsWith(theVm));
+
+		assertThat("the less loaded server should contain vm",
+				lessLoadedServer.contains(theVm));
 
 	}
 
-	@Test 
-	public void balanceAServerWithNotEnoughRoom_shouldNotBeFilledWithAVm(){
+	@Test
+	public void balanceAServerWithNotEnoughRoom_shouldNotBeFilledWithAVm() {
 		Server theServer = a(server().withCapacity(10).withCurrentLoadOf(90.0d));
 		Vm theVm = a(vm().ofSize(2));
 		balance(aListOfServersWith(theServer), aListOfVmsWith(theVm));
-		
-		assertThat("the less loaded server should not contain vm", !theServer.contains(theVm));
+
+		assertThat("the less loaded server should not contain vm",
+				!theServer.contains(theVm));
 	}
 
 	
-	
+
 }
