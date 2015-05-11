@@ -21,6 +21,16 @@ public class ServerLoadBalancerTest {
 		balance(aListOfServersWith(theServer), anEmptyListOfVms());
 		assertThat(theServer, hadLoadPercentageOf(0.0d));
 	}
+	
+	@Test
+	public void balancingOneServer_withOneSlotCapacity_andOneSlotVm_fillsTheServerWithTheVm(){
+		Server theServer = a(server().withCapacity(1));
+		Vm theVm = a(vm().ofSize(1));
+		balance(aListOfServersWith(theServer),aListOfVmsWith(theVm));
+		
+		assertThat(theServer, hadLoadPercentageOf(100.0d));
+		assertThat("the server should contain vm", theServer.contains(theVm));
+	}
 
 	
 
@@ -48,6 +58,7 @@ public class ServerLoadBalancerTest {
 		// TODO Auto-generated method stub
 		return new CurrenntLowPercentageMatcher(expectedLoadPercentage);
 	}
+	
 
 	
 
