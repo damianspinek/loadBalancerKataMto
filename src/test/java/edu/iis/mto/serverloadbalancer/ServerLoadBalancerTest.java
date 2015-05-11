@@ -55,9 +55,14 @@ public class ServerLoadBalancerTest {
 	}
 	
 
-	private Vm[] aListOfVmsWith(Vm theVm) {
+	private Matcher<? super Server> hasVmsCountOf(int expectedCount) {
 		// TODO Auto-generated method stub
-		return new Vm[]{theVm};
+		return new ServerVmsCountMatcher(expectedCount);
+	}
+
+	private Vm[] aListOfVmsWith(Vm ... vms) {
+		// TODO Auto-generated method stub
+		return vms;
 	}
 
 	private <T> T a(Builder<T> builder) {
