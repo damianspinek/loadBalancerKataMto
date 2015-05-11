@@ -34,6 +34,21 @@ public class ServerLoadBalancerTest {
 
 	
 
+	private Vm[] aListOfVmsWith(Vm theVm) {
+		// TODO Auto-generated method stub
+		return new Vm[]{theVm};
+	}
+
+	private Vm a(VmBuilder builder) {
+		// TODO Auto-generated method stub
+		return builder.build();
+	}
+
+	private VmBuilder vm() {
+		// TODO Auto-generated method stub
+		return new VmBuilder();
+	}
+
 	private Server a(ServerBuilder server) {
 		
 		return server.build();
