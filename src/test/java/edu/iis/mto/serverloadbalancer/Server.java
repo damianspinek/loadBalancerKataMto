@@ -5,9 +5,10 @@ import org.hamcrest.Matcher;
 public class Server {
 
 	public double currentLoadPecentage;
+	public int capacity;
 
 	public Server(int capacity) {
-		// TODO Auto-generated constructor stub
+		this.capacity = capacity;
 	}
 
 	public boolean contains(Vm theVm) {
