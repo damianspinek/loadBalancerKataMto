@@ -2,6 +2,7 @@ package edu.iis.mto.serverloadbalancer;
 
 
 import static edu.iis.mto.serverloadbalancer.ServerBuilder.server;
+import static edu.iis.mto.serverloadbalancer.VmBuilder.vm;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -39,19 +40,9 @@ public class ServerLoadBalancerTest {
 		return new Vm[]{theVm};
 	}
 
-	private Vm a(VmBuilder builder) {
+	private <T> T a(Builder<T> builder) {
 		// TODO Auto-generated method stub
 		return builder.build();
-	}
-
-	private VmBuilder vm() {
-		// TODO Auto-generated method stub
-		return new VmBuilder();
-	}
-
-	private Server a(ServerBuilder server) {
-		
-		return server.build();
 	}
 
 	private Vm[] anEmptyListOfVms() {
