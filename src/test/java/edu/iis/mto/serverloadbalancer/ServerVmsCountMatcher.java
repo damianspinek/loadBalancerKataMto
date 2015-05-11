@@ -15,8 +15,8 @@ public class ServerVmsCountMatcher extends TypeSafeMatcher<Server> {
 	public void describeTo(Description description) {
 		description.appendText("a server with a vms count of").appendValue(
 				expectedCount);
-
 	}
+	
 	
 	@Override
 	protected void describeMismatchSafely(Server item,
@@ -29,6 +29,11 @@ public class ServerVmsCountMatcher extends TypeSafeMatcher<Server> {
 	protected boolean matchesSafely(Server item) {
 		// TODO Auto-generated method stub
 		return item.vmsCount() == expectedCount;
+	}
+	
+	static Matcher<? super Server> hasVmsCountOf(int expectedCount) {
+		// TODO Auto-generated method stub
+		return new ServerVmsCountMatcher(expectedCount);
 	}
 
 }
