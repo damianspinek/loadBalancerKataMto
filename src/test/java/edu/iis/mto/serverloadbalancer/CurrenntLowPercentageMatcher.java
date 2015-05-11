@@ -26,8 +26,11 @@ public class CurrenntLowPercentageMatcher extends TypeSafeMatcher<Server> {
 
 	@Override
 	protected boolean matchesSafely(Server server) {
-        return server.currentLoadPecentage == expectedLoadPercentage || Math.abs(server.currentLoadPecentage - expectedLoadPercentage) < 0.01d;
+        return equalsDouble(server);
 
+	}
+	private boolean equalsDouble(Server server) {
+		return server.currentLoadPecentage == expectedLoadPercentage || Math.abs(server.currentLoadPecentage - expectedLoadPercentage) < 0.01d;
 	}
 
 }

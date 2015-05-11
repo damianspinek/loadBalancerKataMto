@@ -1,11 +1,9 @@
 package edu.iis.mto.serverloadbalancer;
 
 
+import static edu.iis.mto.serverloadbalancer.ServerBuilder.server;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-
-import java.util.Arrays;
-import java.util.List;
 
 import org.hamcrest.Matcher;
 import org.junit.Test;
@@ -51,10 +49,7 @@ public class ServerLoadBalancerTest {
 		return new CurrenntLowPercentageMatcher(expectedLoadPercentage);
 	}
 
-	private ServerBuilder server() {
-		// TODO Auto-generated method stub
-		return new ServerBuilder();
-	}
+	
 
 
 }
