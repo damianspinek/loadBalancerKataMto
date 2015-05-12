@@ -31,6 +31,21 @@ public class ServerLoadBalancerTest {
 		assertThat("the server should contain vm", theServer.contains(theVm));
 	}
 
+	private Vm[] aListOfVmsWith(Vm theVm) {
+		// TODO Auto-generated method stub
+		return new Vm[]{theVm};
+	}
+
+	private Vm a(VmBuilder builder) {
+		// TODO Auto-generated method stub
+		return builder.build();
+	}
+
+	private VmBuilder vm() {
+		// TODO Auto-generated method stub
+		return new VmBuilder();
+	}
+
 	private void balance(Server[] aListOfServersWith, Vm[] vms) {
 		new ServerLoadBalancer().balance(aListOfServersWith, vms);
 		
