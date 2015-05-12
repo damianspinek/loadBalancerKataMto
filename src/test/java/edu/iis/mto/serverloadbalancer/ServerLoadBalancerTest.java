@@ -56,14 +56,19 @@ public class ServerLoadBalancerTest {
 		assertThat("the server should contain vm", theServer.contains(secondVm));
 	}
 
+	private ServerVmsCountMatcher hasVmsCountOf(int expectedCount) {
+		// TODO Auto-generated method stub
+		return new ServerVmsCountMatcher(expectedCount);
+	}
+
 	private <T> T a(Builder<T> builder) {
 		// TODO Auto-generated method stub
 		return builder.build();
 	}
 
-	private Vm[] aListOfVmsWith(Vm theVm) {
+	private Vm[] aListOfVmsWith(Vm ... vms) {
 		// TODO Auto-generated method stub
-		return new Vm[]{theVm};
+		return vms;
 	}
 
 	private void balance(Server[] aListOfServersWith, Vm[] vms) {
