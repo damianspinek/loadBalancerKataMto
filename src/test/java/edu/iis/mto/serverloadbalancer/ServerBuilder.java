@@ -3,9 +3,15 @@ package edu.iis.mto.serverloadbalancer;
 public class ServerBuilder implements Builder<Server> {
 
 	private int capacity;
+	private double initialLoad;
 
-	public Builder withCapacity(int capacity) {
+	public ServerBuilder withCapacity(int capacity) {
 		this.capacity = capacity;
+		return this;
+	}
+	
+	public ServerBuilder withCurrentLoadOf(double initialLoad){
+		this.initialLoad = initialLoad;
 		return this;
 	}
 
@@ -14,7 +20,13 @@ public class ServerBuilder implements Builder<Server> {
 	 */
 	public Server build() {
 		// TODO Auto-generated method stub
-		return new Server(capacity);
+		Server server = new Server(capacity);
+		if(initialLoad > 0){
+            int expectedLoad = (int) (initialLoad / 100.0d * (double) server.getCapacity());
+            server.addVm(VmBuilder.vm().ofSize(expectedLoad).build());
+ 		}
+		
+		return server;
 	}
 	
 	public static ServerBuilder server() {
