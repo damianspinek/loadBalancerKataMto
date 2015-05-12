@@ -27,6 +27,11 @@ public class CurrentLowPercentageMatcher extends TypeSafeMatcher<Server> {
 		// TODO Auto-generated method stub
 		return equalsDouble(item);
 	}
+	
+	public static CurrentLowPercentageMatcher hadLoadPercentageOf(double expectedLoadPercentage) {
+		// TODO Auto-generated method stub
+		return new CurrentLowPercentageMatcher(expectedLoadPercentage);
+	}
 
 	private boolean equalsDouble(Server item) {
 		return item.currentLoadPercentage == this.expectedLoadPercentage || Math.abs(item.currentLoadPercentage-expectedLoadPercentage) < 0.01d;
