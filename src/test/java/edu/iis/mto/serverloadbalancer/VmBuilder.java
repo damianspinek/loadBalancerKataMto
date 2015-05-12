@@ -1,6 +1,6 @@
 package edu.iis.mto.serverloadbalancer;
 
-public class VmBuilder {
+public class VmBuilder implements Builder<Vm>{
 
 	private int size;
 
@@ -12,6 +12,11 @@ public class VmBuilder {
 	public Vm build() {
 		// TODO Auto-generated method stub
 		return new Vm(size);
+	}
+	
+	public static VmBuilder vm() {
+		// TODO Auto-generated method stub
+		return new VmBuilder();
 	}
 
 }
