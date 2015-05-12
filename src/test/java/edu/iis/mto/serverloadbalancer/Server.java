@@ -33,4 +33,10 @@ public class Server {
 		// TODO Auto-generated method stub
 		return capacity;
 	}
+
+	public boolean canFit(Vm vm) {
+		// TODO Auto-generated method stub
+        return currentLoadPecentage + ((double)vm.size / (double)this.capacity *MAX_LOAD) <= MAX_LOAD ;
+
+	}
 }
