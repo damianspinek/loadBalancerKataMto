@@ -12,6 +12,11 @@ public class ServerBuilder {
 	public Server build() {
 		return new Server(this.capacity);
 	}
+	
+	public static ServerBuilder server() {
+		// TODO Auto-generated method stub
+		return new ServerBuilder();
+	}
 
 
 }
