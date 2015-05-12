@@ -15,7 +15,7 @@ public class CurrenntLowPercentageMatcher extends TypeSafeMatcher<Server> {
 	protected void describeMismatchSafely(Server item,
 			Description mismatchDescription) {
 		mismatchDescription.appendText("a server with load percentage of ")
-		.appendValue(item.currentLoadPecentage);
+		.appendValue(item.getCurrentLoadPecentage());
 	}
 	
 	public void describeTo(Description description) {
@@ -30,7 +30,7 @@ public class CurrenntLowPercentageMatcher extends TypeSafeMatcher<Server> {
 
 	}
 	private boolean equalsDouble(Server server) {
-		return server.currentLoadPecentage == expectedLoadPercentage || Math.abs(server.currentLoadPecentage - expectedLoadPercentage) < 0.01d;
+		return server.getCurrentLoadPecentage() == expectedLoadPercentage || Math.abs(server.getCurrentLoadPecentage() - expectedLoadPercentage) < 0.01d;
 	}
 
 }

@@ -6,7 +6,7 @@ import java.util.List;
 public class Server {
 
 	public static final double MAX_LOAD = 100.0d;
-	public double currentLoadPecentage;
+	private double currentLoadPecentage;
 	public int capacity;
 	List<Vm> vms = new ArrayList<Vm>();
 
@@ -38,5 +38,10 @@ public class Server {
 		// TODO Auto-generated method stub
         return currentLoadPecentage + ((double)vm.size / (double)this.capacity *MAX_LOAD) <= MAX_LOAD ;
 
+	}
+
+	public double getCurrentLoadPecentage() {
+		// TODO Auto-generated method stub
+		return currentLoadPecentage;
 	}
 }
