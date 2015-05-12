@@ -22,7 +22,7 @@ public class ServerBuilder implements Builder<Server> {
 		// TODO Auto-generated method stub
 		Server server = new Server(capacity);
 		if(initialLoad > 0){
-            int expectedLoad = (int) (initialLoad / 100.0d * (double) server.getCapacity());
+            int expectedLoad = (int) (initialLoad / Server.MAX_LOAD * (double) server.getCapacity());
             server.addVm(VmBuilder.vm().ofSize(expectedLoad).build());
  		}
 		
