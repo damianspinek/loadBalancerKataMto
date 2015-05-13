@@ -13,7 +13,7 @@ public class Server {
 	}
 	public boolean contains(Vm theVm) {
 		// TODO Auto-generated method stub
-		return true;
+		return vms.contains(theVm);
 	}
 	public void addVm(Vm vm) {
 		this.vms.add(vm);
@@ -23,6 +23,10 @@ public class Server {
 	public int vmsCount() {
 		// TODO Auto-generated method stub
 		return vms.size();
+	}
+	public int getCapacity() {
+		// TODO Auto-generated method stub
+		return capacity;
 	}
 
 }

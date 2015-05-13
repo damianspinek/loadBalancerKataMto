@@ -94,9 +94,9 @@ public class ServerLoadBalancerTest {
 		return new Vm[0];
 	}
 
-	private Server[] aListOfServersWith(Server theServer) {
+	private Server[] aListOfServersWith(Server ... servers) {
 		// TODO Auto-generated method stub
-		return new Server[]{theServer};
+		return servers;
 	}
 
 	
