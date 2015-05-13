@@ -98,6 +98,8 @@ public class ServerLoadBalancerTest {
 		assertThat("a server should contains vm", firstServer.contains(firstVm));
 		assertThat("a server should contains vm", secondServer.contains(secondVm));
 		assertThat("a server should contains vm", firstServer.contains(thirdVm));
+		
+		
 	}
 
 	
