@@ -12,16 +12,16 @@ public class ServerBuilder implements Builder<Server> {
 		return this;
 	}
 
-
 	public Server build() {
 		Server server = new Server(capacity);
-		if(initialLoad > 0){
-			int expectedLoad = (int) (initialLoad/MAX_LOAD * server.getCapacity());
+		if (initialLoad > 0) {
+			int expectedLoad = (int) (initialLoad / 100.0d * (double) server
+					.getCapacity());
 			server.addVm(VmBuilder.vm().ofSize(expectedLoad).build());
 		}
 		return server;
 	}
-	
+
 	public static ServerBuilder server() {
 		// TODO Auto-generated method stub
 		return new ServerBuilder();
@@ -31,6 +31,5 @@ public class ServerBuilder implements Builder<Server> {
 		this.initialLoad = currentLoad;
 		return this;
 	}
-
 
 }

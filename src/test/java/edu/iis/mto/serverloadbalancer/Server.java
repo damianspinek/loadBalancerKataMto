@@ -12,7 +12,6 @@ public class Server {
 		this.capacity = capacity;
 	}
 	public boolean contains(Vm theVm) {
-		// TODO Auto-generated method stub
 		return vms.contains(theVm);
 	}
 	public void addVm(Vm vm) {
@@ -27,6 +26,10 @@ public class Server {
 	public int getCapacity() {
 		// TODO Auto-generated method stub
 		return capacity;
+	}
+	public boolean canFit(Vm vm) {
+		// TODO Auto-generated method stub
+		return currentLoadPercentage + ((double)vm.size / (double)this.capacity *MAX_LOAD) <= MAX_LOAD ;
 	}
 
 }
