@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Server {
-	private static final double MAX_LOAD = 100.0d;
+	public static final double MAX_LOAD = 100.0d;
 	int capacity;
 	public double currentLoadPercentage;
 	private List<Vm> vms = new ArrayList<Vm>();
